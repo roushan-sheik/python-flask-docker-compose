@@ -18,6 +18,14 @@ services:
     image: nginx:latest
     networks:
       - full-stack
+  db:
+    container_name: mysql
+    image: mysql:8.0.25
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=application
+      - MYSQL_USER=api
+      - MYSQL_PASSWORD=api123
 
 networks:
   full-stack:
