@@ -18,6 +18,7 @@ services:
     image: nginx:latest
     networks:
       - full-stack
+
   db:
     container_name: mysql
     image: mysql:8.0.25
@@ -26,7 +27,14 @@ services:
       - MYSQL_DATABASE=application
       - MYSQL_USER=api
       - MYSQL_PASSWORD=api123
+    networks:
+      - full-stack
+    volumes:
+      - db-data:/var/lib/mysql
 
 networks:
   full-stack:
     driver: bridge
+
+volumes:
+  db-data:
